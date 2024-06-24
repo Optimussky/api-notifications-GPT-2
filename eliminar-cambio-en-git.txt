@@ -1,1 +1,2 @@
 Este archivo es de prueba para aprender a revertir el último cambio en GIT
+Esta línea es la que no debe aparecer.
