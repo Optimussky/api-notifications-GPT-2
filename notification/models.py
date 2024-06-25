@@ -10,7 +10,7 @@ class Login(models.Model):
         return self.username
 
 class Notification(models.Model):
-        # foreingKey con dataSystem
+    # foreingKey con dataSystem
     #dataSystem = models.ForeignKey("notification.dataSystem", on_delete=models.CASCADE)# Se evita tener que usar jeraquía al crear clases
     uuid = models.UUIDField(unique=True, default=uuid.uuid4, editable=False)
     body = models.TextField()

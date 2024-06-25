@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     # Third party apps
+    'corsheaders',
     'rest_framework',
     'rest_framework_simplejwt',
     #'rest_framework_json_api',
@@ -47,6 +49,8 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -59,7 +63,25 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authenticationJWTAtuthentication',
     )
 }
+
+ALLOWED_HOSTS = ["10.13.123.53:8900","*"]
+#ALLOWED_HOSTS = ["*"]
+
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOWED_ORIGINS = [
+    'http://10.13.123.53:8900',
+]
+
+CORS_ORIGIN_WHITELIST = (
+    #'http://localhost:3000',  # for localhost (REACT Default)
+    'http://10.13.123.53:8900/admin',  # for network 
+    #'http://localhost:8080',  # for localhost (Developlemt)
+    #'http://192.168.0.50:8080',  # for network (Development)
+)
 APPEND_SLASH=False
+
+
+
 # Configuración para Django Rest Framework Simple JWT
 from datetime import timedelta
 
