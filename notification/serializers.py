@@ -12,5 +12,6 @@ class LoginSerializer(ModelSerializer):
 class NotificationSerializer(ModelSerializer):
     class Meta:
         model = Notification
-        fields = ['uuid', 'body', 'email', 'title']
+        #fields = ['uuid', 'body', 'email', 'title']
+        fields = ['body', 'email', 'title']
 

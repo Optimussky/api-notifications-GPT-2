@@ -1,7 +1,7 @@
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
@@ -32,16 +32,22 @@ class LoginView(APIView):
 
 # Vista para enviar notificación por correo
 class SendNotificationView(APIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
 
     def post(self, request):
         serializer = NotificationSerializer(data=request.data)
 
         if serializer.is_valid():
+            ## Agregar los métodos de guardado
+            #TODO: Agregar save()
+            
+            
+
+
             # Código para el envío del correo electrónico
             # send_mail(notification.title, notification.body, 'from@example.com',[notification.email])
             print(serializer)
-            return Response({'date': timezone.now(), 'message': 'Correo Electrónico enviado exitosamente.'}, status=status.HTTP_200_OK),serializer
+            return Response({'date': timezone.now(), 'message': 'Correo Electrónico enviado exitosamente.'}, status=status.HTTP_200_OK)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
